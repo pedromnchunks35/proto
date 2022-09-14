@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20" height="20" viewBox="0 0 20 20">
+  <defs>
+    <clipPath id="clip-As_minhas_Rotas_cheio">
+      <rect width="20" height="20"/>
+    </clipPath>
+  </defs>
+  <g id="As_minhas_Rotas_cheio" data-name="As minhas Rotas cheio" clip-path="url(#clip-As_minhas_Rotas_cheio)">
+    <rect width="20" height="20" fill="none"/>
+    <g id="Grupo_1038" data-name="Grupo 1038" transform="translate(0 6)">
+      <path id="Icon_awesome-route" data-name="Icon awesome-route" d="M15.846,12.189H12.189a1.219,1.219,0,1,1,0-2.438h3.657S19.5,5.676,19.5,3.657a3.657,3.657,0,1,0-7.314,0,8.035,8.035,0,0,0,1.726,3.657H12.189a3.657,3.657,0,1,0,0,7.314h3.657a1.219,1.219,0,1,1,0,2.438H7.462c-.01.007-1.675,2.247-1.8,2.438H15.846a3.657,3.657,0,1,0,0-7.314Zm0-9.751a1.219,1.219,0,1,1-1.219,1.219A1.218,1.218,0,0,1,15.846,2.438ZM3.657,9.751A3.658,3.658,0,0,0,0,13.408c0,2.019,3.657,5.862,3.657,5.862s3.657-3.843,3.657-5.862A3.658,3.658,0,0,0,3.657,9.751Zm0,4.876a1.219,1.219,0,1,1,1.219-1.219A1.218,1.218,0,0,1,3.657,14.627Z" transform="translate(0.219 -5.849)" fill="#fff"/>
+      <rect id="Retângulo_573" data-name="Retângulo 573" width="20" height="20" transform="translate(0 -6)" fill="none"/>
+    </g>
+  </g>
+</svg>

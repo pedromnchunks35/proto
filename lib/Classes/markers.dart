@@ -7,7 +7,8 @@ CoordsM coords;
 String name;
 String description;
 String url;
-Markercoords({required this.id,required this.coords,required this.name,required this.description,required this.url});
+int likes;
+Markercoords({required this.id,required this.coords,required this.name,required this.description,required this.url,required this.likes});
 }
 
 //CLASS COORDS

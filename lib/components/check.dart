@@ -1,6 +1,9 @@
+
+
+import 'package:flutter_map_marker_popup/flutter_map_marker_popup.dart';
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
-import 'package:flutter_map_marker_cluster/flutter_map_marker_cluster.dart';
 import 'package:latlong2/latlong.dart';
 class Markers extends StatefulWidget {
   const Markers({Key? key}) : super(key: key);
@@ -9,8 +12,28 @@ class Markers extends StatefulWidget {
   State<Markers> createState() => _MarkersState();
 }
 
-class _MarkersState extends State<Markers> {
 
+
+class _MarkersState extends State<Markers> {
+late MapController mapController; 
+/// Used to trigger showing/hiding of popups.
+  final PopupController _popupLayerController = PopupController();
+
+
+List<Marker> markers = [];
+
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    mapController = MapController();
+    markers.add(Marker(
+            width: 50,
+            height: 50,
+            point: LatLng(41.604520,-8.428207), builder: (context)=> Icon(Icons.person)
+            ));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,63 +43,51 @@ class _MarkersState extends State<Markers> {
       body: Column(
         children: [Expanded(
           child: FlutterMap(
+            mapController: mapController,
             //THE OPTIONS
           options: MapOptions(
             center: LatLng(41.607863,-8.430310),
               zoom: 18,
-              // FOR PERFORMANCE ISSUES
-              plugins: [
-                MarkerClusterPlugin(),
-              ]
+              onTap: (_, __) => _popupLayerController
+              .hideAllPopups(), // Hide popup when the map is tapped.
           ),
           
-          //LAYERS
-          layers: [
-              //THE MAP
-              TileLayerOptions(
-                //TEMPLATE FROM OPENSTREETMAPS
-                  urlTemplate: "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
-                  userAgentPackageName: 'com.example.app',
-              ),
-              
-              MarkerClusterLayerOptions(
-              maxClusterRadius: 120,
-              size: Size(40, 40),
-              fitBoundsOptions: FitBoundsOptions(
-                padding: EdgeInsets.all(50),
-              ),
-              markers: [
-               Marker(
-                      point: LatLng(41.608700, -8.427670),
-                      width: 100,
-                      height: 100,
-                      builder: (context) => IconButton(onPressed: (){print('André é gay');}, icon: Icon(Icons.person)),
-                      )
-              ],
-              polygonOptions: PolygonOptions(
-                  borderColor: Colors.blueAccent,
-                  color: Colors.black12,
-                  borderStrokeWidth: 3),
-              builder: (context, markers) {
-                return FloatingActionButton(
-                  child: Text(markers.length.toString()),
-                  onPressed: null,
-                );
-              }),
-              
-          ],
+          
+          children: [
+                  TileLayer(
+                    urlTemplate:
+                        'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                    subdomains: ['a', 'b', 'c'],
+                    userAgentPackageName: 'dev.fleaflet.flutter_map.example',
+                  ),
+                  
+                  
+                  PopupMarkerLayerWidget(
+            options: PopupMarkerLayerOptions(
+              popupController: _popupLayerController,
+              markers: markers,
+              markerRotateAlignment:
+                  PopupMarkerLayerOptions.rotationAlignmentFor(AnchorAlign.top),
+              popupBuilder: (BuildContext context, Marker marker) =>
+                  Container(width: 50,height: 50,child: Text('Hello World'),color: Colors.white,)
+            ),
+                  ),
+
+                ],
+          
+        
+          
               
           //
-          nonRotatedChildren: [
-              AttributionWidget.defaultWidget(
-                  source: 'OpenStreetMap contributors',
-                  onSourceTapped: null,
-              ),
-          ],
+         
             ),
         ),
         
-        TextButton(onPressed: (){}, child: Text('Hello world'))
+        TextButton(onPressed: ()async{
+        
+      
+
+        }, child: Text('Hello world'))
         
           ]
       ),

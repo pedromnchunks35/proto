@@ -177,7 +177,7 @@ Future<void> _onEmbeddedRouteEvent(e) async {
                                   wayPoints: waypoints,
                                   options: MapBoxOptions(
                                       mode: MapBoxNavigationMode.driving,
-                                      simulateRoute: false,
+                                      simulateRoute: true,
                                       language: "en",
                                       allowsUTurnAtWayPoints: true,
                                       units: VoiceUnits.metric));
@@ -198,7 +198,7 @@ Future<void> _onEmbeddedRouteEvent(e) async {
                                   wayPoints: waypoints,
                                   options: MapBoxOptions(
                                       mode: MapBoxNavigationMode.driving,
-                                      simulateRoute: false,
+                                      simulateRoute: true,
                                       language: "en",
                                       allowsUTurnAtWayPoints: true,
                                       units: VoiceUnits.metric));
